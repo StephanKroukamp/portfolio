@@ -50,35 +50,42 @@
     </nav>
 
     <header class="hero">
-      <pre class="cmdline" aria-hidden="true"><span class="cmd-prompt"><span class="user">stephan</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">~</span><span class="sigil">$</span></span> whoami</pre>
+      <pre class="cmdline" aria-hidden="true"><span class="cmd-prompt"><span class="user">stephan</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">~</span><span class="sigil">$</span></span> whoami <span class="flag">--verbose</span></pre>
 
       <div class="hero-grid">
-        <div class="avatar" aria-label="Stephan Kroukamp"><span class="brackets">[</span>SK<span class="brackets">]</span></div>
+        <div class="avatar-wrap">
+          <div class="avatar" aria-label="Stephan Kroukamp"><span class="brackets">[</span>SK<span class="brackets">]</span></div>
+        </div>
 
         <div class="hero-text">
-          <h1>Stephan Kroukamp<span class="cursor" aria-hidden="true"></span></h1>
-          <p class="hero-title"><span class="kw">const</span> <span class="fn">role</span> = <span class="str">"Software Engineer"</span>;</p>
-          <p class="hero-meta">
-            <span class="comment">// Pretoria, ZA · 8+ years · .NET / Azure / event-driven systems</span>
+          <div class="hero-name-row">
+            <h1>Stephan Kroukamp<span class="cursor" aria-hidden="true"></span></h1>
+            <span class="status-pill">
+              <span class="status-dot" aria-hidden="true"></span>
+              available for opportunities
+            </span>
+          </div>
+
+          <p class="hero-title">
+            Software Engineer
+            <span class="hero-sep" aria-hidden="true">/</span>
+            <span class="muted">Pretoria, ZA</span>
+            <span class="hero-sep" aria-hidden="true">/</span>
+            <span class="muted">.NET · Azure · event-driven systems</span>
           </p>
 
-          <ul class="contact-list" aria-label="Contact details">
-            <li>
-              <a href="mailto:stephan.kroukamp@gmail.com">
-                <span class="contact-key">email</span><span class="contact-eq">=</span><span class="contact-val">stephan.kroukamp@gmail.com</span>
-              </a>
-            </li>
-            <li>
-              <a href="tel:+27795068709">
-                <span class="contact-key">phone</span><span class="contact-eq">=</span><span class="contact-val">+27&nbsp;79&nbsp;506&nbsp;8709</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/StephanKroukamp" target="_blank" rel="noopener">
-                <span class="contact-key">github</span><span class="contact-eq">=</span><span class="contact-val">StephanKroukamp</span>
-              </a>
-            </li>
+          <ul class="stats" aria-label="Quick stats">
+            <li><span class="stat-num">8+</span><span class="stat-label">years exp</span></li>
+            <li><span class="stat-num">3</span><span class="stat-label">companies</span></li>
+            <li><span class="stat-num">5</span><span class="stat-label">certifications</span></li>
+            <li><span class="stat-num">∞</span><span class="stat-label">curiosity</span></li>
           </ul>
+
+          <pre class="code-block contact-block" aria-label="Contact"><span class="ln">1</span>  <span class="kw">const</span> <span class="fn">contact</span> = {
+<span class="ln">2</span>    <span class="prop">email</span>:  <a class="str-link" href="mailto:stephan.kroukamp@gmail.com">"stephan.kroukamp@gmail.com"</a>,
+<span class="ln">3</span>    <span class="prop">phone</span>:  <a class="str-link" href="tel:+27795068709">"+27 79 506 8709"</a>,
+<span class="ln">4</span>    <span class="prop">github</span>: <a class="str-link" href="https://github.com/StephanKroukamp" target="_blank" rel="noopener">"StephanKroukamp"</a>,
+<span class="ln">5</span>  };</pre>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="Stephan_Kroukamp_CV.pdf" download>
@@ -273,7 +280,7 @@
       <section class="section eof" aria-hidden="true">
         <pre class="cmdline">
 <span class="cmd-prompt"><span class="user">stephan</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">~</span><span class="sigil">$</span></span> exit
-<span class="comment">// End of file. Press the [SK] block to swap themes.</span>
+<span class="comment">// thanks for scrolling — let's build something.</span>
 <span class="cmd-prompt"><span class="user">stephan</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">~</span><span class="sigil">$</span></span> <span class="cursor inline" aria-hidden="true"></span>
 </pre>
       </section>
@@ -284,13 +291,13 @@
 
   <footer class="statusbar" aria-label="Status bar">
     <div class="sb-left">
-      <span class="sb-chip mode">NORMAL</span>
-      <span class="sb-chip path" id="sb-section">~/profile.md</span>
+      <span class="sb-chip availability">
+        <span class="status-dot" aria-hidden="true"></span>
+        available for opportunities
+      </span>
     </div>
     <div class="sb-right">
-      <span class="sb-chip">utf-8</span>
-      <span class="sb-chip">LF</span>
-      <span class="sb-chip">main</span>
+      <a class="sb-chip sb-link" href="https://github.com/StephanKroukamp/portfolio" target="_blank" rel="noopener">view source</a>
       <button
         id="theme-toggle"
         class="sb-chip theme-toggle"
@@ -298,7 +305,7 @@
         aria-label="Toggle dark / light theme"
         title="Toggle theme"
       ><span id="theme-icon">☾</span></button>
-      <span class="sb-chip" id="sb-clock">--:--</span>
+      <span class="sb-chip sb-clock" id="sb-clock">--:--</span>
     </div>
   </footer>
 

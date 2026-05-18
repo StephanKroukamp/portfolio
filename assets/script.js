@@ -80,24 +80,12 @@
     setInterval(tick, 1000);
   }
 
-  /* ---------- Status bar: current section + nav highlight ---------- */
-  const sectionLabel = document.getElementById("sb-section");
+  /* ---------- Nav: highlight current section on scroll ---------- */
   const sections = document.querySelectorAll("main .section[id]");
   const navLinks = document.querySelectorAll(".nav-links a");
-  const fileNames = {
-    profile:        "~/profile.md",
-    experience:     "~/experience.log",
-    skills:         "~/skills/",
-    certifications: "~/certifications.json",
-    education:      "~/education.yml",
-    projects:       "~/side-projects/",
-    interests:      "~/.hobbies",
-    references:     "~/references.txt",
-  };
 
   if ("IntersectionObserver" in window && sections.length) {
     const linkFor = (id) => document.querySelector(`.nav-links a[href="#${id}"]`);
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -105,14 +93,10 @@
           navLinks.forEach((l) => l.removeAttribute("data-active"));
           const link = linkFor(entry.target.id);
           if (link) link.setAttribute("data-active", "true");
-          if (sectionLabel && fileNames[entry.target.id]) {
-            sectionLabel.textContent = fileNames[entry.target.id];
-          }
         });
       },
       { rootMargin: "-40% 0px -55% 0px" }
     );
-
     sections.forEach((s) => observer.observe(s));
   }
 
