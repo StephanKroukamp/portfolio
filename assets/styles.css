@@ -80,7 +80,7 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color .3s ease, color .3s ease;
   min-height: 100vh;
-  padding: 24px;
+  padding: 24px 24px 64px;   /* extra bottom space for fixed status bar */
 }
 
 a {
@@ -242,8 +242,9 @@ h1, h2, h3 { line-height: 1.25; margin: 0; font-weight: 700; }
   align-items: center;
 }
 
-/* The [SK] block — easter egg trigger */
+/* The [SK] block — pure visual identity */
 .avatar {
+  display: inline-flex; align-items: center;
   background: transparent;
   border: 1px dashed var(--border-strong);
   color: var(--accent);
@@ -252,16 +253,9 @@ h1, h2, h3 { line-height: 1.25; margin: 0; font-weight: 700; }
   font-weight: 700;
   padding: 14px 18px;
   border-radius: 6px;
-  cursor: default;       /* easter egg: doesn't look clickable */
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  transition: transform .15s ease, border-color .2s ease, background-color .2s ease;
   letter-spacing: 2px;
 }
-.avatar:hover { background: var(--accent-soft); }
-.avatar:active { transform: scale(0.96); }
-.avatar:focus-visible { outline: 2px dashed var(--accent); outline-offset: 4px; }
 .avatar .brackets { color: var(--muted); margin: 0 4px; font-weight: 400; }
 
 .hero-text h1 {
@@ -618,18 +612,23 @@ main { padding: 0 32px 60px; }
   color: var(--fg-soft);
 }
 
-/* === Status bar (vim/tmux style) === */
+/* === Status bar (vim/tmux style, fixed to viewport bottom) === */
 .statusbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 60;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
   background: var(--bg-chrome);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-strong);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.20);
   padding: 6px 16px;
   font-size: 11.5px;
   color: var(--muted);
   flex-wrap: wrap;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 .sb-left, .sb-right {
   display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
@@ -640,6 +639,10 @@ main { padding: 0 32px 60px; }
   background: transparent;
   color: var(--fg-soft);
   letter-spacing: 0.4px;
+  font-family: inherit;
+  font-size: inherit;
+  border: 0;
+  line-height: 1.6;
 }
 .sb-chip.mode {
   background: var(--accent);
@@ -652,6 +655,28 @@ main { padding: 0 32px 60px; }
 #sb-clock {
   font-variant-numeric: tabular-nums;
   color: var(--num);
+}
+
+/* Theme toggle chip */
+.theme-toggle {
+  cursor: pointer;
+  color: var(--fn);
+  background: color-mix(in srgb, var(--fn) 14%, transparent);
+  font-size: 13px;
+  padding: 1px 10px;
+  transition: background-color .15s ease, color .15s ease, transform .1s ease;
+}
+.theme-toggle:hover {
+  background: color-mix(in srgb, var(--fn) 26%, transparent);
+}
+.theme-toggle:active { transform: scale(0.94); }
+.theme-toggle:focus-visible {
+  outline: 1px dashed var(--fn);
+  outline-offset: 2px;
+}
+.theme-toggle #theme-icon {
+  display: inline-block;
+  line-height: 1;
 }
 
 /* === Toast (theme switch feedback) === */
@@ -685,7 +710,7 @@ main { padding: 0 32px 60px; }
 
 /* === Mobile === */
 @media (max-width: 760px) {
-  body { padding: 10px; font-size: 13.5px; }
+  body { padding: 10px 10px 72px; font-size: 13.5px; }
   .titlebar { grid-template-columns: 70px 1fr 0; }
   .titlebar .tabs { display: none; }
   .title { font-size: 11px; text-align: right; }

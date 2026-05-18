@@ -53,13 +53,7 @@
       <pre class="cmdline" aria-hidden="true"><span class="cmd-prompt"><span class="user">stephan</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">~</span><span class="sigil">$</span></span> whoami</pre>
 
       <div class="hero-grid">
-        <button
-          id="avatar"
-          class="avatar"
-          type="button"
-          aria-label="Stephan Kroukamp — toggle theme"
-          title="SK"
-        ><span class="brackets">[</span>SK<span class="brackets">]</span></button>
+        <div class="avatar" aria-label="Stephan Kroukamp"><span class="brackets">[</span>SK<span class="brackets">]</span></div>
 
         <div class="hero-text">
           <h1>Stephan Kroukamp<span class="cursor" aria-hidden="true"></span></h1>
@@ -286,20 +280,27 @@
 
     </main>
 
-    <footer class="statusbar" aria-label="Status bar">
-      <div class="sb-left">
-        <span class="sb-chip mode">NORMAL</span>
-        <span class="sb-chip path" id="sb-section">~/profile.md</span>
-      </div>
-      <div class="sb-right">
-        <span class="sb-chip">utf-8</span>
-        <span class="sb-chip">LF</span>
-        <span class="sb-chip">main</span>
-        <span class="sb-chip" id="sb-clock">--:--</span>
-      </div>
-    </footer>
-
   </div>
+
+  <footer class="statusbar" aria-label="Status bar">
+    <div class="sb-left">
+      <span class="sb-chip mode">NORMAL</span>
+      <span class="sb-chip path" id="sb-section">~/profile.md</span>
+    </div>
+    <div class="sb-right">
+      <span class="sb-chip">utf-8</span>
+      <span class="sb-chip">LF</span>
+      <span class="sb-chip">main</span>
+      <button
+        id="theme-toggle"
+        class="sb-chip theme-toggle"
+        type="button"
+        aria-label="Toggle dark / light theme"
+        title="Toggle theme"
+      ><span id="theme-icon">☾</span></button>
+      <span class="sb-chip" id="sb-clock">--:--</span>
+    </div>
+  </footer>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

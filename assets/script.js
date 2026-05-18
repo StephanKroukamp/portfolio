@@ -2,7 +2,8 @@
   const STORAGE_KEY = "sk-theme";
   const root = document.documentElement;
   const toast = document.getElementById("toast");
-  const avatar = document.getElementById("avatar");
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
 
   /* ---------- Theme: dark/light with persistence ---------- */
   const stored = localStorage.getItem(STORAGE_KEY);
@@ -11,6 +12,15 @@
   } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
     root.setAttribute("data-theme", "light");
   }
+
+  const currentTheme = () =>
+    root.getAttribute("data-theme") === "light" ? "light" : "dark";
+
+  const syncIcon = () => {
+    if (!themeIcon) return;
+    themeIcon.textContent = currentTheme() === "light" ? "☀" : "☾";
+  };
+  syncIcon();
 
   let toastTimer;
   const showToast = (text) => {
@@ -22,10 +32,10 @@
   };
 
   const toggleTheme = () => {
-    const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
-    const next = current === "light" ? "dark" : "light";
+    const next = currentTheme() === "light" ? "dark" : "light";
     root.setAttribute("data-theme", next);
     localStorage.setItem(STORAGE_KEY, next);
+    syncIcon();
     showToast(
       next === "light"
         ? "set -g theme light  // ☀"
@@ -33,7 +43,7 @@
     );
   };
 
-  if (avatar) avatar.addEventListener("click", toggleTheme);
+  if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
 
   /* ---------- Konami code → same toggle ---------- */
   const konami = [
