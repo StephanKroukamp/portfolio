@@ -363,7 +363,7 @@ h1, h2, h3 { line-height: 1.25; margin: 0; font-weight: 700; }
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   border-right: 1px solid var(--border);
 }
 .stats li:last-child { border-right: 0; }
@@ -373,6 +373,7 @@ h1, h2, h3 { line-height: 1.25; margin: 0; font-weight: 700; }
   color: var(--accent);
   line-height: 1;
   letter-spacing: -0.5px;
+  margin-right: 8px;        /* keeps a visible gap if it ever renders inline */
 }
 .stat-label {
   font-size: 10.5px;
