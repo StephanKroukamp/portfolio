@@ -15,9 +15,22 @@ portfolio/
 │   ├── styles.css
 │   ├── script.js
 │   └── favicon.svg
+├── cv/
+│   ├── cv.html       # source for the downloadable CV
+│   └── build.sh      # renders cv.html → Stephan_Kroukamp_CV.pdf
 ├── Stephan_Kroukamp_CV.pdf
 └── .nojekyll
 ```
+
+## Updating the CV
+
+Edit `cv/cv.html`, then regenerate the PDF with headless Chrome/Edge:
+
+```bash
+bash cv/build.sh
+```
+
+Bump the `?v=` query on the download link in `index.html` so visitors don't get a cached copy.
 
 ## Easter egg
 

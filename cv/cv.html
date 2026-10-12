@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Stephan Kroukamp — CV</title>
+<!--
+  Source for ../Stephan_Kroukamp_CV.pdf — rebuild with ./build.sh (headless Chrome, A4, 2 pages).
+-->
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --navy: #13213d;
+    --navy-deep: #0c1a2a;
+    --accent: #2e86ab;
+    --accent-soft: #7bafd4;
+    --ink: #1a1a2e;
+    --text: #3d3d5c;
+    --muted: #888;
+    --rule: #dde3ea;
+    --side-w: 64mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text);
+    font-size: 8.6pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    display: grid;
+    grid-template-columns: var(--side-w) 1fr;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  /* ---------- Sidebar ---------- */
+  .side {
+    background: var(--navy);
+    color: #e6edf5;
+    display: flex;
+    flex-direction: column;
+  }
+  .side-inner { padding: 10mm 7mm 0; flex: 1; }
+  .side-foot {
+    background: var(--navy-deep);
+    color: var(--accent-soft);
+    font-weight: 700;
+    font-size: 7pt;
+    letter-spacing: .08em;
+    text-align: center;
+    padding: 5mm 4mm;
+    text-transform: uppercase;
+  }
+
+  .photo {
+    width: 44mm; height: 44mm;
+    border-radius: 50%;
+    border: 1.2mm solid var(--accent);
+    overflow: hidden;
+    margin: 0 auto 4.5mm;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .name {
+    color: #fff;
+    font-size: 17pt;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+  .pill {
+    display: block;
+    width: max-content;
+    margin: 2.5mm auto 0;
+    background: var(--accent);
+    color: #fff;
+    font-size: 8pt;
+    padding: 1mm 4mm;
+    border-radius: 3mm;
+  }
+
+  .side h2 {
+    color: var(--accent-soft);
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    border-bottom: .3mm solid #2f4466;
+    padding-bottom: 1.2mm;
+    margin: 7mm 0 2.6mm;
+  }
+
+  .contact { list-style: none; }
+  .contact li {
+    display: flex; align-items: center; gap: 2.4mm;
+    font-size: 7.8pt;
+    margin-bottom: 1.6mm;
+    word-break: break-word;
+  }
+  .contact svg { width: 3.2mm; height: 3.2mm; flex: none; fill: var(--accent-soft); }
+  .contact a { color: #e6edf5; text-decoration: none; }
+
+  .skills { list-style: none; }
+  .skills li { margin-bottom: 2.4mm; }
+  .skills .k {
+    display: block;
+    color: #fff;
+    font-weight: 700;
+    font-size: 7.8pt;
+    margin-bottom: .4mm;
+  }
+  .skills .v { font-size: 7.6pt; color: #c9d6e6; }
+  .skills .v span { white-space: nowrap; }
+
+  .certs { list-style: none; }
+  .certs li { display: flex; align-items: center; gap: 2.4mm; margin-bottom: 1.8mm; font-size: 7.8pt; }
+  .certs .code {
+    flex: none;
+    width: 13mm;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 7pt;
+    padding: .8mm 0;
+    border-radius: .8mm;
+  }
+
+  .interests { list-style: none; }
+  .interests li { font-size: 7.8pt; margin-bottom: 1.3mm; padding-left: 3mm; position: relative; }
+  .interests li::before {
+    content: ""; position: absolute; left: 0; top: 1.6mm;
+    width: 1.1mm; height: 1.1mm; border-radius: 50%; background: var(--accent);
+  }
+
+  /* ---------- Main column ---------- */
+  .main { display: flex; flex-direction: column; }
+  .band {
+    background: var(--accent);
+    color: #fff;
+    font-size: 8.4pt;
+    padding: 4.6mm 10mm;
+    display: flex; gap: 2.5mm; flex-wrap: wrap; align-items: center;
+  }
+  .band a { color: #fff; text-decoration: none; }
+  .band .dot { opacity: .7; }
+  .band.slim { justify-content: space-between; font-size: 8pt; padding: 3.4mm 10mm; }
+  .band.slim strong { font-weight: 700; letter-spacing: .02em; }
+
+  .content { padding: 6mm 10mm 8mm; flex: 1; }
+
+  .content h2 {
+    color: var(--ink);
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border-bottom: .3mm solid var(--rule);
+    padding: 0 0 1.4mm 3.2mm;
+    margin: 5.5mm 0 3mm;
+    position: relative;
+  }
+  .content h2::before {
+    content: ""; position: absolute; left: 0; top: .2mm; bottom: 1.4mm;
+    width: 1.3mm; background: var(--accent);
+  }
+  .content > h2:first-child { margin-top: 0; }
+
+  .lead { font-size: 8.8pt; line-height: 1.5; }
+
+  .role { margin-bottom: 4.6mm; break-inside: avoid; }
+  .role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .role-head h3 { color: var(--ink); font-size: 10.4pt; font-weight: 700; }
+  .role-head h3 .sep { color: var(--muted); font-weight: 400; margin: 0 1mm; }
+  .when { color: var(--muted); font-size: 8pt; white-space: nowrap; }
+  .title {
+    color: var(--accent);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 8.6pt;
+    margin: .6mm 0 1.8mm;
+  }
+  .title .promo { color: var(--muted); font-weight: 400; }
+
+  .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 1.3mm; margin-bottom: 2.2mm; }
+  .chips li {
+    font-size: 7pt;
+    color: var(--text);
+    border: .25mm solid var(--accent);
+    border-radius: 1.4mm;
+    padding: .3mm 2mm;
+  }
+
+  .bullets { list-style: none; }
+  .bullets li { position: relative; padding-left: 4mm; margin-bottom: 1.15mm; }
+  .bullets li::before {
+    content: ""; position: absolute; left: .6mm; top: 1.75mm;
+    width: 1.1mm; height: 1.1mm; border-radius: 50%; background: var(--accent);
+  }
+  .bullets strong { color: var(--ink); }
+
+  .edu { margin-bottom: 3.2mm; }
+  .edu .sub { font-style: italic; }
+
+  .projects { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 6mm; }
+  .projects strong { color: var(--ink); display: block; }
+
+  .refs { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .refs h3 { color: var(--ink); font-size: 9.6pt; }
+  .refs .org { color: var(--accent); font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGE 1 ======================= -->
+<section class="page">
+  <aside class="side">
+    <div class="side-inner">
+      <div class="photo"><img src="../assets/me.jpg" alt="Stephan Kroukamp" /></div>
+      <div class="name">Stephan<br />Kroukamp</div>
+      <span class="pill">Software Engineer</span>
+
+      <h2>Contact</h2>
+      <ul class="contact">
+        <li><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg><a href="tel:+27795068709">+27 79 506 8709</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:stephan.kroukamp@gmail.com">stephan.kroukamp@gmail.com</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Pretoria, South Africa</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg><a href="https://github.com/StephanKroukamp">github.com/StephanKroukamp</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M3.9 12a3.1 3.1 0 0 1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8v2zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg><a href="https://stephankroukamp.github.io/portfolio/">stephankroukamp.github.io/portfolio</a></li>
+      </ul>
+
+      <h2>Technical Skills</h2>
+      <ul class="skills">
+        <li><span class="k">Backend</span><span class="v"><span>C#</span> · <span>.NET 8 / 10</span> · <span>ASP.NET Core</span> · <span>MassTransit</span></span></li>
+        <li><span class="k">Frontend</span><span class="v"><span>Angular</span> · <span>TypeScript</span></span></li>
+        <li><span class="k">Cloud &amp; DevOps</span><span class="v"><span>Azure</span> · <span>Kubernetes</span> · <span>Docker</span> · <span>Azure DevOps CI/CD</span></span></li>
+        <li><span class="k">Messaging &amp; Data</span><span class="v"><span>Azure Service Bus</span> · <span>AMQP</span> · <span>ElasticSearch</span> · <span>SQL / T-SQL</span></span></li>
+        <li><span class="k">Architecture</span><span class="v"><span>Microservices</span> · <span>Event-driven design</span> · <span>REST APIs</span></span></li>
+        <li><span class="k">Observability &amp; Support</span><span class="v"><span>Grafana</span> · <span>Production monitoring</span> · <span>Incident response</span></span></li>
+      </ul>
+
+      <h2>Certifications</h2>
+      <ul class="certs">
+        <li><span class="code">AZ-400</span>DevOps Engineer Expert</li>
+        <li><span class="code">AZ-204</span>Azure Developer Associate</li>
+        <li><span class="code">AZ-900</span>Azure Fundamentals</li>
+        <li><span class="code">OCP</span>Oracle Java Professional</li>
+        <li><span class="code">OCA</span>Oracle Java Associate</li>
+      </ul>
+    </div>
+    <div class="side-foot">9+ years professional experience</div>
+  </aside>
+
+  <div class="main">
+    <div class="band">
+      <a href="mailto:stephan.kroukamp@gmail.com">stephan.kroukamp@gmail.com</a><span class="dot">·</span>
+      <a href="tel:+27795068709">+27 79 506 8709</a><span class="dot">·</span>
+      <span>Pretoria, South Africa</span>
+    </div>
+
+    <div class="content">
+      <h2>Profile</h2>
+      <p class="lead">
+        Software Engineer with 9+ years of experience designing, delivering and supporting high-volume,
+        business-critical systems. Specialises in .NET / C# and Azure, with full-stack experience in Angular
+        and cloud-native delivery on Docker and Kubernetes. Takes a pragmatic, scenario-driven approach —
+        adapting patterns, architecture and tooling to whatever best fits the problem rather than prescribing a
+        fixed methodology. Currently at BMW, building and supporting Autonomous Transport Solutions, the
+        platform that controls the robots moving materials through BMW plants. Previously the main developer
+        on WeBuyCars' Buy Lead Management System via Agile Bridge, driving technical decisions and pioneering
+        AI-assisted development with Claude Code.
+      </p>
+
+      <h2>Experience</h2>
+
+      <article class="role">
+        <div class="role-head">
+          <h3>BMW<span class="sep">·</span>Autonomous Transport Solutions</h3>
+          <span class="when">Aug 2026 – Present</span>
+        </div>
+        <p class="title">Software Engineer</p>
+        <ul class="chips">
+          <li>.NET</li><li>C#</li><li>Angular</li><li>Azure</li><li>Kubernetes</li><li>Docker</li><li>Grafana</li>
+        </ul>
+        <ul class="bullets">
+          <li>Engineering the <strong>Autonomous Transport Solutions (ATS)</strong> platform, which controls the autonomous robots transporting materials through BMW production plants.</li>
+          <li>Building features end-to-end across <strong>.NET / C#</strong> backend services and <strong>Angular</strong> frontends.</li>
+          <li>Containerising and deploying services with <strong>Docker</strong> and <strong>Kubernetes</strong> on <strong>Azure</strong>.</li>
+          <li>Providing <strong>critical business support</strong> for live plant operations — monitoring system health in Grafana, diagnosing production incidents and keeping material flow running.</li>
+        </ul>
+      </article>
+
+      <article class="role">
+        <div class="role-head">
+          <h3>Agile Bridge<span class="sep">·</span>WeBuyCars</h3>
+          <span class="when">Sep 2022 – Jul 2026</span>
+        </div>
+        <p class="title">Software Engineer <span class="promo">— promoted to Solid Engineer, Jul 2024</span></p>
+        <ul class="chips">
+          <li>.NET 8 / .NET 10</li><li>C#</li><li>MassTransit</li><li>Azure Service Bus</li>
+          <li>ElasticSearch</li><li>Docker</li><li>Azure DevOps</li><li>SQL</li>
+        </ul>
+        <ul class="bullets">
+          <li>Main developer on the <strong>Buy Lead Management System (BLMS)</strong> for WeBuyCars — a high-volume, business-critical platform at the core of the vehicle purchasing operation.</li>
+          <li>Owned the full SDLC — requirements meetings, task and ticket creation, building, deploying and monitoring systems in production.</li>
+          <li>Diagnosed and resolved complex bugs across deeply interconnected systems; rewrote legacy code to be optimised, performant and maintainable.</li>
+          <li>Led <strong>.NET 8 and .NET 10 upgrades</strong> across BLMS and 15–20 downstream APIs; replaced MediatR with direct MassTransit event publishing across 6 microservices.</li>
+          <li>Rebuilt the <strong>ElasticSearch syncing pipeline</strong> using Azure Service Bus session queues with outbox deduplication — significantly improving reliability and throughput under high load.</li>
+          <li>Architected and launched <strong>Inspectify</strong> (vehicle inspection platform) in under 2 months, integrating MAHA brake testing equipment by working through complex German documentation and legacy code.</li>
+          <li>Delivered the <strong>Remarketing API</strong> with zero post-deployment code fixes — surfacing re-purchasing leads from vehicles sold 2+ years prior and directly generating new business.</li>
+          <li>Rebuilt the <strong>TransUnion Catalogue Import</strong> pipeline, cutting batch processing from several days to under one hour via monthly SFTP-based transfers instead of per-record API calls.</li>
+          <li>Mentored graduate engineers and led internal knowledge-sharing sessions on MassTransit and event-driven patterns.</li>
+          <li>Pioneered <strong>Claude Code (Anthropic)</strong> adoption from February 2026 — integrating AI-assisted development into daily engineering workflows and delivering measurable velocity improvements across the team.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PAGE 2 ======================= -->
+<section class="page">
+  <aside class="side">
+    <div class="side-inner">
+      <h2 style="margin-top:0">Interests</h2>
+      <ul class="interests">
+        <li>Football</li>
+        <li>Tennis</li>
+        <li>Formula 1</li>
+        <li>Guitar &amp; music production</li>
+        <li>Hiking</li>
+        <li>Gaming</li>
+        <li>Technology &amp; AI</li>
+      </ul>
+    </div>
+    <div class="side-foot">9+ years professional experience</div>
+  </aside>
+
+  <div class="main">
+    <div class="band slim">
+      <strong>Stephan Kroukamp · Software Engineer</strong>
+      <span>Page 2 of 2</span>
+    </div>
+
+    <div class="content">
+      <h2>Experience <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(continued)</span></h2>
+
+      <article class="role">
+        <div class="role-head">
+          <h3>Stay Contactable</h3>
+          <span class="when">Sep 2019 – Aug 2022</span>
+        </div>
+        <p class="title">Software Engineer</p>
+        <ul class="chips">
+          <li>C#</li><li>ASP.NET Core</li><li>GCP</li><li>Kubernetes</li><li>Docker</li>
+          <li>Postgres</li><li>MySQL</li><li>SQL Server</li>
+        </ul>
+        <ul class="bullets">
+          <li>Developed a <strong>Know Your Customer (KYC)</strong> digital identity validation platform using C#, ASP.NET Core, Bootstrap and cloud-native GCP infrastructure with Kubernetes orchestration.</li>
+          <li>Designed and shipped multiple scalable 3rd-party API integrations across Cassandra, MySQL, Postgres and SQL Server — all built for resilience under production load.</li>
+        </ul>
+      </article>
+
+      <article class="role">
+        <div class="role-head">
+          <h3>Online Intelligence</h3>
+          <span class="when">Oct 2017 – Aug 2019</span>
+        </div>
+        <p class="title">Software Developer</p>
+        <ul class="chips">
+          <li>Java</li><li>TCP / MQTT</li><li>SOAP / REST</li><li>Apache SOLR</li><li>Oracle SQL</li><li>MSSQL</li>
+        </ul>
+        <ul class="bullets">
+          <li>Built <strong>alarm monitoring systems</strong> in Java using TCP, MQTT, serial/COM port listeners, SOAP &amp; REST web services, jQuery and Apache SOLR across Oracle and Microsoft SQL Server databases.</li>
+          <li>Developed cross-platform mobile monitoring apps using Adobe PhoneGap / Cordova, extending the platform to field technicians.</li>
+        </ul>
+      </article>
+
+      <h2>Education</h2>
+      <div class="edu">
+        <div class="role-head"><h3>CTI</h3><span class="when">Jan 2016</span></div>
+        <p class="sub">Higher Certificate in Information Systems — 75% average</p>
+      </div>
+      <div class="edu">
+        <div class="role-head"><h3>Die Hoërskool Menlo Park</h3><span class="when">2013</span></div>
+        <p class="sub">Matric — IT, Mathematics, Physics, Engineering Graphics &amp; Design</p>
+      </div>
+
+      <h2>Side Projects</h2>
+      <ul class="projects">
+        <li><strong>SqlExplorer</strong>A faster way to navigate and query SQL databases.</li>
+        <li><strong>Azure Exam Simulator</strong>Practice exam tool for Microsoft Azure certifications.</li>
+        <li><strong>Minesweeper for VS Code</strong>Classic Minesweeper, playable inside VS Code.</li>
+        <li><strong>.NET Cross-platform IDE</strong>Experimental lightweight IDE for .NET on every OS.</li>
+      </ul>
+
+      <h2>References</h2>
+      <div class="refs">
+        <div>
+          <h3>Jason Shedden</h3>
+          <p class="org">Stay Contactable</p>
+          <p>072 192 0406</p>
+        </div>
+        <div>
+          <h3>Tanya Viljoen</h3>
+          <p class="org">Online Intelligence</p>
+          <p>073 238 4475</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
